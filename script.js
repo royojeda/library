@@ -16,7 +16,7 @@ function addBookToLibrary(author, title, pageCount, isRead) {
 
 function addCard(book) {
   const card = document.createElement("div")
-  card.className = "flex-1 flex flex-col justify-center p-4 rounded shadow-md border text-center"
+  card.className = "flex-1 flex flex-col justify-center p-6 rounded-lg shadow border text-center"
 
   const title = document.createElement("div")
   title.className = "font-medium"
@@ -33,7 +33,7 @@ function addCard(book) {
   card.appendChild(pageCount)
 
   const isRead = document.createElement("div")
-  isRead.textContent = book.isRead ? "Read" : "Not Read"
+  isRead.textContent = book.isRead ? "Finished" : "Not Finished"
   card.appendChild(isRead)
 
   cardContainer.appendChild(card)
