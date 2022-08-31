@@ -1,6 +1,9 @@
 let myLibrary = [];
 
 const cardContainer = document.querySelector(".cardContainer")
+const newBookButton = document.querySelector(".newBookButton")
+const modal = document.querySelector(".modal")
+const form = document.querySelector(".form")
 
 function Book(author, title, pageCount, isRead) {
   this.author = author
@@ -39,6 +42,18 @@ function addCard(book) {
   cardContainer.appendChild(card)
 }
 
+function openModal() {
+  modal.classList.replace("opacity-0", "opacity-100")
+  modal.classList.remove("z-[-1]")
+}
+
+function closeModal(event) {
+  if (!form.contains(event.target)) {
+    modal.classList.replace("opacity-100", "opacity-0")
+    modal.classList.add("z-[-1]")
+  }
+}
+
 addBookToLibrary("J.K. Rowling", "Harry Potter and the Half-Blood Prince", 607, true)
 
 addBookToLibrary("George Orwell", "Nineteen Eighty-Four", 328, false)
@@ -51,3 +66,6 @@ addBookToLibrary("Jim Collins", "Good to Great: Why Some Companies Make the Leap
 
 addBookToLibrary("Yann Martel", "Life of Pi", 352, false)
 myLibrary.forEach(addCard)
+
+newBookButton.addEventListener("click", openModal)
+modal.addEventListener("click", closeModal)

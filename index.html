@@ -14,7 +14,7 @@
       <div class="cardContainer w-full grid auto-rows-fr items-stretch gap-10">
       </div>
 
-      <button type="button" class="px-4 py-2.5 rounded-lg shadow border flex items-center gap-2 transition ease-in-out duration-300 hover:bg-black hover:text-white hover:fill-white focus:ring-4 focus:ring-gray-500">
+      <button type="button" class="newBookButton px-4 py-2.5 rounded-lg shadow border flex items-center gap-2 transition ease-in-out duration-300 hover:bg-black hover:text-white hover:fill-white focus:ring-4 focus:ring-gray-500">
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="224.46 224.46 303.09 303.09" class="w-6">
           <g>
            <path d="m366.53 366.53h-71.039v18.941h71.039v71.039h18.941v-71.039h71.039v-18.941h-71.039v-71.039h-18.941z" fill-rule="evenodd"/>
@@ -25,6 +25,22 @@
 
         New Book
       </button>
+    </div>
+
+    <div class="modal z-[-1] flex absolute bg-gray-300 w-full h-screen items-center justify-center opacity-0 bg-opacity-90 transition ease-in-out duration-300">
+      <div class="form bg-white rounded-md shadow-md border p-6 space-y-4 bg-opacity-100">
+        <div>
+          <label for="author">Author:</label>
+
+          <input type="text" name="author" id="author" class="border rounded">
+        </div>
+
+        <div>
+          <label for="title">Title:</label>
+
+          <input type="text" name="title" id="title" class="border rounded">
+        </div>
+      </div>
     </div>
   </div>
 </body>
