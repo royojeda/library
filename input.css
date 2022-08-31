@@ -5,3 +5,7 @@
 /* * {
   outline: 1px solid black;
 } */
+
+.cardContainer {
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+}

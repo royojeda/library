@@ -45,4 +45,9 @@ addBookToLibrary("George Orwell", "Nineteen Eighty-Four", 328, false)
 
 addBookToLibrary("Paulo Coelho", "The Alchemist", 163, false)
 
+addBookToLibrary("Gretchen Rubin", "The Happiness Project", 368, false)
+
+addBookToLibrary("Jim Collins", "Good to Great: Why Some Companies Make the Leap... and Others Don't", 320, false)
+
+addBookToLibrary("Yann Martel", "Life of Pi", 352, false)
 myLibrary.forEach(addCard)
