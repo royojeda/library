@@ -4,6 +4,10 @@ const cardContainer = document.querySelector(".cardContainer")
 const newBookButton = document.querySelector(".newBookButton")
 const modal = document.querySelector(".modal")
 const form = document.querySelector(".form")
+const authorInput = document.querySelector("#author")
+const titleInput = document.querySelector("#title")
+const pageCountInput = document.querySelector("#pageCount")
+const isReadCheckbox = document.querySelector("#isRead")
 
 function Book(author, title, pageCount, isRead) {
   this.author = author
@@ -51,8 +55,16 @@ function closeModal(event) {
   if (!form.contains(event.target)) {
     modal.classList.replace("opacity-100", "opacity-0")
     modal.classList.add("z-[-1]")
+
+    authorInput.value = ""
+    titleInput.value = ""
+    pageCountInput.value = ""
+    isReadCheckbox.checked = false
   }
 }
+
+newBookButton.addEventListener("click", openModal)
+modal.addEventListener("click", closeModal)
 
 addBookToLibrary("J.K. Rowling", "Harry Potter and the Half-Blood Prince", 607, true)
 
@@ -65,7 +77,5 @@ addBookToLibrary("Gretchen Rubin", "The Happiness Project", 368, false)
 addBookToLibrary("Jim Collins", "Good to Great: Why Some Companies Make the Leap... and Others Don't", 320, false)
 
 addBookToLibrary("Yann Martel", "Life of Pi", 352, false)
-myLibrary.forEach(addCard)
 
-newBookButton.addEventListener("click", openModal)
-modal.addEventListener("click", closeModal)
+myLibrary.forEach(addCard)
