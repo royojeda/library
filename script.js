@@ -8,6 +8,7 @@ const authorInput = document.querySelector("#author")
 const titleInput = document.querySelector("#title")
 const pageCountInput = document.querySelector("#pageCount")
 const isReadCheckbox = document.querySelector("#isRead")
+const createBookButton = document.querySelector(".createBookButton")
 
 function Book(author, title, pageCount, isRead) {
   this.author = author
@@ -63,8 +64,23 @@ function closeModal(event) {
   }
 }
 
+function createBook() {
+  addBookToLibrary(authorInput.value, titleInput.value, pageCountInput.value, isReadCheckbox.checked)
+
+  addCard(myLibrary[myLibrary.length - 1])
+
+  modal.classList.replace("opacity-100", "opacity-0")
+  modal.classList.add("z-[-1]")
+
+  authorInput.value = ""
+  titleInput.value = ""
+  pageCountInput.value = ""
+  isReadCheckbox.checked = false
+}
+
 newBookButton.addEventListener("click", openModal)
 modal.addEventListener("click", closeModal)
+createBookButton.addEventListener("click", createBook)
 
 addBookToLibrary("J.K. Rowling", "Harry Potter and the Half-Blood Prince", 607, true)
 
