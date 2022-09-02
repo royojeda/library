@@ -41,7 +41,7 @@ function addCard(book) {
   card.appendChild(pageCount)
 
   const isRead = document.createElement("div")
-  isRead.textContent = book.isRead ? "Finished" : "Not Finished"
+  isRead.textContent = book.isRead ? "Finished reading" : "Not finished reading"
   card.appendChild(isRead)
 
   cardContainer.appendChild(card)
