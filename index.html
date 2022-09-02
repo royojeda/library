@@ -29,11 +29,17 @@
 
     <div class="modal z-[2] flex absolute bg-gray-300 w-full h-full items-center justify-center opacity-100 bg-opacity-90 transition ease-in-out duration-300 p-8">
       <div class="form bg-white rounded-md shadow-md border p-10 space-y-6 bg-opacity-100 flex flex-col">
-        <input type="text" name="author" id="author" class="border rounded p-1 ring-gray-500 focus:ring-4 focus:outline-none transition" placeholder="Author" maxlength="100">
+        <div>
+          <input type="text" name="author" id="author" class="requiredInput border rounded p-1 ring-gray-500 focus:ring-4 focus:outline-none transition" placeholder="Author" maxlength="100">
+        </div>
 
-        <input type="text" name="title" id="title" class="border rounded p-1 ring-gray-500 focus:ring-4 focus:outline-none transition" placeholder="Title" maxlength="100">
+        <div>
+          <input type="text" name="title" id="title" class="requiredInput border rounded p-1 ring-gray-500 focus:ring-4 focus:outline-none transition" placeholder="Title" maxlength="100">
+        </div>
 
-        <input type="number" name="pageCount" id="pageCount" class="appearance-none border rounded p-1 ring-gray-500 focus:ring-4 focus:outline-none transition" placeholder="Number of pages" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4"  onkeypress="return event.charCode >= 48" min="1">
+        <div>
+          <input type="number" name="pageCount" id="pageCount" class="requiredInput appearance-none border rounded p-1 ring-gray-500 focus:ring-4 focus:outline-none transition" placeholder="Number of pages" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4"  onkeypress="return event.charCode >= 48" min="1">
+        </div>
 
         <label for="isRead" class="relative cursor-pointer">
           <input type="checkbox" name="isRead" id="isRead" class="peer sr-only">

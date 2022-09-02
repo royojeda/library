@@ -9,6 +9,7 @@ const titleInput = document.querySelector("#title")
 const pageCountInput = document.querySelector("#pageCount")
 const isReadCheckbox = document.querySelector("#isRead")
 const createBookButton = document.querySelector(".createBookButton")
+const requiredInputs = document.querySelectorAll(".requiredInput")
 
 function Book(author, title, pageCount, isRead) {
   this.author = author
@@ -60,23 +61,57 @@ function closeModal(event) {
     authorInput.value = ""
     titleInput.value = ""
     pageCountInput.value = ""
+    unhighlightInput(authorInput)
+    unhighlightInput(titleInput)
+    unhighlightInput(pageCountInput)
     isReadCheckbox.checked = false
   }
 }
 
 function createBook() {
-  addBookToLibrary(authorInput.value, titleInput.value, pageCountInput.value, isReadCheckbox.checked)
+  if (!authorInput.value) {
+    highlightEmptyInput(authorInput)
+  }
 
-  addCard(myLibrary[myLibrary.length - 1])
+  if (!titleInput.value) {
+    highlightEmptyInput(titleInput)
+  }
 
-  modal.classList.replace("opacity-100", "opacity-0")
-  modal.classList.add("z-[-1]")
 
-  authorInput.value = ""
-  titleInput.value = ""
-  pageCountInput.value = ""
-  isReadCheckbox.checked = false
+  if (!pageCountInput.value) {
+    highlightEmptyInput(pageCountInput)
+  }
+
+  if (authorInput.value && titleInput.value && pageCountInput.value) {
+    addBookToLibrary(authorInput.value, titleInput.value, pageCountInput.value, isReadCheckbox.checked)
+
+    addCard(myLibrary[myLibrary.length - 1])
+
+    modal.classList.replace("opacity-100", "opacity-0")
+    modal.classList.add("z-[-1]")
+
+    authorInput.value = ""
+    titleInput.value = ""
+    pageCountInput.value = ""
+    isReadCheckbox.checked = false
+  }
 }
+
+function highlightEmptyInput(input) {
+  input.parentElement.className = "relative before:content-['This_field_is_required.'] before:absolute before:top-[-1rem] before:text-xs before:text-red-500"
+  input.classList.add("border-red-500")
+}
+
+function unhighlightInput(input) {
+  input.parentElement.className = ""
+  input.classList.remove("border-red-500")
+}
+
+requiredInputs.forEach(requiredInput => {
+  requiredInput.addEventListener("input", function() {
+    unhighlightInput(requiredInput)
+  })
+})
 
 newBookButton.addEventListener("click", openModal)
 modal.addEventListener("click", closeModal)
