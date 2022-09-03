@@ -23,9 +23,10 @@ function addBookToLibrary(author, title, pageCount, isRead) {
   myLibrary.push(book)
 }
 
-function addCard(book) {
+function addCard(book, index) {
   const card = document.createElement("div")
-  card.className = "flex-1 flex flex-col justify-center p-6 rounded-lg shadow border text-center"
+  card.className = "card flex-1 flex flex-col justify-center p-6 pb-[4.5rem] rounded-lg shadow border text-center relative"
+  card.dataset.index = index
 
   const title = document.createElement("div")
   title.className = "font-medium"
@@ -45,7 +46,39 @@ function addCard(book) {
   isRead.textContent = book.isRead ? "Finished reading" : "Not finished reading"
   card.appendChild(isRead)
 
+  const deleteButton = document.createElement("button")
+  const deleteIcon = document.createElement("img")
+  deleteIcon.src = "delete.svg"
+  deleteIcon.className = "w-4 transition"
+
+  deleteButton.setAttribute("type", "button")
+  deleteButton.className = "w-fit border shadow rounded py-2 px-2.5 mt-4 absolute bottom-6 right-6 hover:bg-black transition hover:fill-white ring-gray-500 ring-offset-1 focus:ring-4"
+
+  deleteButton.addEventListener("mouseover", () => {
+    deleteIcon.classList.add("whiteSVG")
+  })
+  deleteButton.addEventListener("mouseleave", () => {
+    deleteIcon.classList.remove("whiteSVG")
+  })
+  deleteButton.addEventListener("click", () => {
+    deleteBook(index)
+  })
+
+  deleteButton.appendChild(deleteIcon)
+  card.appendChild(deleteButton)
+
   cardContainer.appendChild(card)
+}
+
+function deleteBook(index) {
+  myLibrary.splice(index, 1)
+
+  const cards = document.querySelectorAll(".card")
+  cards.forEach((card) => {
+    card.remove()
+  })
+
+  displayLibrary()
 }
 
 function openModal() {
@@ -107,6 +140,12 @@ function unhighlightInput(input) {
   input.classList.remove("border-red-500")
 }
 
+function displayLibrary() {
+  myLibrary.forEach((book, index) => {
+    addCard(book, index)
+  })
+}
+
 requiredInputs.forEach(requiredInput => {
   requiredInput.addEventListener("input", function() {
     unhighlightInput(requiredInput)
@@ -129,4 +168,4 @@ addBookToLibrary("Jim Collins", "Good to Great: Why Some Companies Make the Leap
 
 addBookToLibrary("Yann Martel", "Life of Pi", 352, false)
 
-myLibrary.forEach(addCard)
+displayLibrary()
