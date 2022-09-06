@@ -25,7 +25,7 @@ function addBookToLibrary(author, title, pageCount, isRead) {
 
 function addCard(book, index) {
   const card = document.createElement("div")
-  card.className = "card flex-1 flex flex-col justify-center p-6 pb-[4.5rem] rounded-lg shadow border text-center relative"
+  card.className = "card flex-1 flex flex-col justify-center p-6 pb-24 rounded-lg shadow border text-center relative"
   card.dataset.index = index
 
   const title = document.createElement("div")
@@ -46,13 +46,25 @@ function addCard(book, index) {
   isRead.textContent = book.isRead ? "Finished reading" : "Not finished reading"
   card.appendChild(isRead)
 
+  const cardButtons = document.createElement("div")
+  cardButtons.className = "absolute bottom-6 left-6 right-6 flex justify-between items-stretch gap-x-2 mt-4"
+
+  const isReadButton = document.createElement("button")
+  isReadButton.textContent = "Toggle read status"
+  isReadButton.className = "flex-1 rounded border shadow px-2.5 py-1 hover:bg-black hover:text-white ring-gray-500 focus:ring-4 transition"
+
+  isReadButton.addEventListener("click", () => {
+    toggleIsRead(index)
+    renderLibrary()
+  })
+
   const deleteButton = document.createElement("button")
   const deleteIcon = document.createElement("img")
   deleteIcon.src = "delete.svg"
   deleteIcon.className = "w-4 transition"
 
   deleteButton.setAttribute("type", "button")
-  deleteButton.className = "w-fit border shadow rounded py-2 px-2.5 mt-4 absolute bottom-6 right-6 hover:bg-black transition hover:fill-white ring-gray-500 ring-offset-1 focus:ring-4"
+  deleteButton.className = "w-fit border shadow rounded py-2 px-2.5 hover:bg-black transition hover:fill-white ring-gray-500 ring-offset-1 focus:ring-4"
 
   deleteButton.addEventListener("mouseover", () => {
     deleteIcon.classList.add("whiteSVG")
@@ -62,23 +74,33 @@ function addCard(book, index) {
   })
   deleteButton.addEventListener("click", () => {
     deleteBook(index)
+    renderLibrary()
   })
 
+  cardButtons.appendChild(isReadButton)
   deleteButton.appendChild(deleteIcon)
-  card.appendChild(deleteButton)
+  cardButtons.appendChild(deleteButton)
+
+  card.appendChild(cardButtons)
 
   cardContainer.appendChild(card)
 }
 
-function deleteBook(index) {
-  myLibrary.splice(index, 1)
-
+function renderLibrary() {
   const cards = document.querySelectorAll(".card")
   cards.forEach((card) => {
     card.remove()
   })
 
   displayLibrary()
+}
+
+function toggleIsRead(index) {
+  myLibrary[index].isRead = !myLibrary[index].isRead
+}
+
+function deleteBook(index) {
+  myLibrary.splice(index, 1)
 }
 
 function openModal() {

@@ -583,6 +583,10 @@ video {
   bottom: 1.5rem;
 }
 
+.left-6 {
+  left: 1.5rem;
+}
+
 .right-6 {
   right: 1.5rem;
 }
@@ -675,6 +679,10 @@ video {
   justify-content: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .gap-20 {
   gap: 5rem;
 }
@@ -685,6 +693,11 @@ video {
 
 .gap-2 {
   gap: 0.5rem;
+}
+
+.gap-x-2 {
+  -moz-column-gap: 0.5rem;
+       column-gap: 0.5rem;
 }
 
 .space-y-6 > :not([hidden]) ~ :not([hidden]) {
@@ -782,8 +795,8 @@ video {
   padding-right: 0.5rem;
 }
 
-.pb-\[4\.5rem\] {
-  padding-bottom: 4.5rem;
+.pb-24 {
+  padding-bottom: 6rem;
 }
 
 .text-center {
