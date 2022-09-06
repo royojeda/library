@@ -637,6 +637,10 @@ video {
   width: fit-content;
 }
 
+.w-5 {
+  width: 1.25rem;
+}
+
 .max-w-full {
   max-width: 100%;
 }
@@ -795,12 +799,32 @@ video {
   padding-right: 0.5rem;
 }
 
+.px-3\.5 {
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 .pb-24 {
   padding-bottom: 6rem;
 }
 
 .text-center {
   text-align: center;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .font-medium {

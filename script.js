@@ -51,10 +51,10 @@ function addCard(book, index) {
 
   const isReadButton = document.createElement("button")
   isReadButton.textContent = "Toggle read status"
-  isReadButton.className = "flex-1 rounded border shadow px-2.5 py-1 hover:bg-black hover:text-white ring-gray-500 focus:ring-4 transition"
+  isReadButton.className = "text-sm flex-1 rounded border shadow px-2.5 py-1 hover:bg-black hover:text-white ring-gray-500 focus:ring-4 transition"
 
   isReadButton.addEventListener("click", () => {
-    toggleIsRead(index)
+    myLibrary[index].toggleIsRead()
     renderLibrary()
   })
 
@@ -64,7 +64,7 @@ function addCard(book, index) {
   deleteIcon.className = "w-4 transition"
 
   deleteButton.setAttribute("type", "button")
-  deleteButton.className = "w-fit border shadow rounded py-2 px-2.5 hover:bg-black transition hover:fill-white ring-gray-500 ring-offset-1 focus:ring-4"
+  deleteButton.className = "w-fit border shadow rounded py-2 px-3.5 hover:bg-black transition hover:fill-white ring-gray-500 ring-offset-1 focus:ring-4"
 
   deleteButton.addEventListener("mouseover", () => {
     deleteIcon.classList.add("whiteSVG")
@@ -91,12 +91,11 @@ function renderLibrary() {
   cards.forEach((card) => {
     card.remove()
   })
-
   displayLibrary()
 }
 
-function toggleIsRead(index) {
-  myLibrary[index].isRead = !myLibrary[index].isRead
+Book.prototype.toggleIsRead = function() {
+  this.isRead = !this.isRead
 }
 
 function deleteBook(index) {
