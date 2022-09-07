@@ -139,7 +139,7 @@ function createBook() {
   if (authorInput.value && titleInput.value && pageCountInput.value) {
     addBookToLibrary(authorInput.value, titleInput.value, pageCountInput.value, isReadCheckbox.checked)
 
-    addCard(myLibrary[myLibrary.length - 1])
+    addCard(myLibrary[myLibrary.length - 1], myLibrary.length - 1)
 
     modal.classList.replace("opacity-100", "opacity-0")
     modal.classList.add("z-[-1]")
