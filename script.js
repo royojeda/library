@@ -11,11 +11,16 @@ const isReadCheckbox = document.querySelector("#isRead")
 const createBookButton = document.querySelector(".createBookButton")
 const requiredInputs = document.querySelectorAll(".requiredInput")
 
-function Book(author, title, pageCount, isRead) {
-  this.author = author
-  this.title = title
-  this.pageCount = pageCount
-  this.isRead = isRead
+class Book {
+  constructor(author, title, pageCount, isRead) {
+    this.author = author;
+    this.title = title;
+    this.pageCount = pageCount;
+    this.isRead = isRead;
+  }
+  toggleIsRead() {
+    this.isRead = !this.isRead;
+  }
 }
 
 function addBookToLibrary(author, title, pageCount, isRead) {
@@ -94,9 +99,6 @@ function renderLibrary() {
   displayLibrary()
 }
 
-Book.prototype.toggleIsRead = function() {
-  this.isRead = !this.isRead
-}
 
 function deleteBook(index) {
   myLibrary.splice(index, 1)
