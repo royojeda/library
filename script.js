@@ -174,7 +174,7 @@ requiredInputs.forEach(requiredInput => {
 })
 
 newBookButton.addEventListener("click", openModal)
-modal.addEventListener("click", closeModal)
+modal.addEventListener("mousedown", closeModal)
 createBookButton.addEventListener("click", createBook)
 
 addBookToLibrary("J.K. Rowling", "Harry Potter and the Half-Blood Prince", 607, true)
